@@ -33,7 +33,9 @@ SPAR/
 │   ├── 02-landscape-analysis.md (core issues, academics, pioneers)
 │   ├── 03-threat-models.md      (gendered threats, target populations, vanguard strategy)
 │   ├── 04-design-systems.md     (design system research and recommendations)
-│   └── 05-whitepaper.md         (*** FULL RESEARCH PAPER — foundational reference ***)
+│   ├── 05-whitepaper.md         (*** FULL RESEARCH PAPER — foundational reference ***)
+│   ├── 06-gemini-research-process.md (reasoning trace: 25 cycles, 7 threads, contradictions resolved)
+│   └── 07-research-bibliography.md   (complete bibliography: ~147 unique sources across 10 categories)
 ├── Plan/
 │   ├── 01-naming.md             (goddess naming process and Soteria selection)
 │   ├── 02-architecture.md       (neural-symbolic architecture decisions)
