@@ -50,3 +50,9 @@ Gemini generated an audio overview titled **"Neuro-Symbolic AI defeats stalkerwa
 - Identified specific organizations and researchers to align with
 - Established that the "user is the weakest link" fallacy must be rejected at a foundational level
 - Recognized that security must shift from "isolation" to "communal care"
+
+---
+
+## Full Research Output
+
+The complete research synthesis produced by Gemini's Deep Research is documented in `05-whitepaper.md` — *"Engineering Project Shield: A Neuro-Symbolic Architecture for Trauma-Informed, Feminist Cybersecurity."* This 7-section paper is the foundational reference document for the entire Soteria project.

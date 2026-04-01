@@ -17,6 +17,12 @@ This documentation captures a rapid prototyping session conducted on the night o
 
 The conversation with Gemini Pro is documented across the four SPAR phases, organized by the nature of each exchange rather than strict chronological order. Cross-references are noted where a single exchange spans multiple phases.
 
+## Foundational Document
+
+The comprehensive research paper `Sense/05-whitepaper.md` — *"Engineering Project Shield: A Neuro-Symbolic Architecture for Trauma-Informed, Feminist Cybersecurity"* — is the full output of Gemini Pro's Deep Research synthesis. This 7-section whitepaper covers the theoretical foundation (feminist cybersecurity discourse), the threat landscape (stalkerware, doxxing, financial exclusion), the NeSy architecture (G-I-A framework, causal reasoning, semantic guardrails), identity segregation (DIDs, ZKPs, TEEs), trauma-informed UX, and the curb-cut effect. It is the document from which all other SPAR materials are derived.
+
+> **Note:** The paper uses the working title "Project Shield" (Gemini's invention). The project was renamed **Soteria** after the paper was generated. See `Plan/01-naming.md`.
+
 ## Folder Structure
 
 ```
@@ -26,7 +32,8 @@ SPAR/
 │   ├── 01-research-question.md  (the founding prompt and theoretical framing)
 │   ├── 02-landscape-analysis.md (core issues, academics, pioneers)
 │   ├── 03-threat-models.md      (gendered threats, target populations, vanguard strategy)
-│   └── 04-design-systems.md     (design system research and recommendations)
+│   ├── 04-design-systems.md     (design system research and recommendations)
+│   └── 05-whitepaper.md         (*** FULL RESEARCH PAPER — foundational reference ***)
 ├── Plan/
 │   ├── 01-naming.md             (goddess naming process and Soteria selection)
 │   ├── 02-architecture.md       (neural-symbolic architecture decisions)
