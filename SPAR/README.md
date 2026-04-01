@@ -35,7 +35,8 @@ SPAR/
 │   ├── 04-design-systems.md     (design system research and recommendations)
 │   ├── 05-whitepaper.md         (*** FULL RESEARCH PAPER — foundational reference ***)
 │   ├── 06-gemini-research-process.md (reasoning trace: 25 cycles, 7 threads, contradictions resolved)
-│   └── 07-research-bibliography.md   (complete bibliography: ~147 unique sources across 10 categories)
+│   ├── 07-research-bibliography.md   (complete bibliography: ~147 unique sources across 10 categories)
+│   └── 08-final-research.md          (final Deep Research output: SPAR-TDD execution blueprint)
 ├── Plan/
 │   ├── 01-naming.md             (goddess naming process and Soteria selection)
 │   ├── 02-architecture.md       (neural-symbolic architecture decisions)
@@ -47,7 +48,10 @@ SPAR/
 │   ├── 01-prototypes.md         (three parallel builds: Cursor, Stitch, Gemini)
 │   ├── 02-hashing-implementation.md (real SHA-256 client-side hashing)
 │   ├── 03-stakeholder-comms.md  (text message, email drafts for Brelyn)
-│   └── 04-tdd-execution-plan.md (SPAR-aligned TDD workflow for MVP)
+│   ├── 04-tdd-execution-plan.md (SPAR-aligned TDD workflow for MVP)
+│   ├── 05-module-vault.md     (Module 1: Vault OPSEC — Blind Key TDD spec)
+│   ├── 06-module-guardrail.md (Module 2: Guardrail Isolation — NeSy defense TDD spec)
+│   └── 07-module-panic-button.md (Module 3: Panic Button — trauma-informed exit TDD spec)
 └── Reflect/
     ├── 01-mission-recentering.md (correcting the "scale to mainstream" framing)
     ├── 02-inclusivity.md         (centering sex workers and marginalized communities)

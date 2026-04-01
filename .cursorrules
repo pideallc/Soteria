@@ -1,6 +1,12 @@
-# Soteria — Cursor Agent Rules
+# Soteria — Cursor Agent Rules (Immutable Constitution)
 # AI-First Feminist Cybersecurity Ecosystem
 # Last updated: April 1, 2026
+#
+# This file is the IMMUTABLE CONSTITUTION — stable, long-term directives.
+# For current workflow state, task breakdown, and action log, see
+# .cursor-state.md (the DYNAMIC STATE file).
+#
+# Together these form the dual-file agent governance system.
 
 ## Identity
 
@@ -15,23 +21,32 @@ Every decision you make must reflect that weight.
 
 ---
 
-## The TDD Mandate
+## The SPAR-TDD Mandate
 
-For every new feature, component, or logic change, you MUST follow
-the Red-Green-Refactor cycle strictly:
+Development follows a strict cognitive loop. Each feature moves through
+four phases mapped to the Red-Green-Refactor cycle:
+
+| SPAR Phase | TDD State | Your Action | Verification |
+|-----------|-----------|-------------|--------------|
+| Sense | Pre-Red | Parse codebase, read test coverage, review .cursor-state.md | Log environment state in state file |
+| Plan | Red | Decompose requirement, write minimal failing tests | Tests MUST fail. Block all implementation edits. |
+| Act | Green | Write absolute minimum code to pass failing tests | Tests MUST pass. No unrelated module edits. |
+| Reflect | Refactor | Security review, clean architecture, optimize | Tests MUST stay green throughout. |
 
 ### RED (Write failing tests first)
 - Write a comprehensive test suite that defines expected behavior,
   edge cases, and security constraints
 - Output ONLY the test code, then STOP
-- Do not generate any implementation code until the human confirms
-  the tests fail
+- Do not generate any implementation code until tests fail
+- Update .cursor-state.md with phase = RED and test file paths
 
 ### GREEN (Write minimum passing code)
-- Only after confirmation that tests fail, write the absolute minimum
-  implementation code to make them pass
+- Only after tests fail, write the absolute minimum implementation
+  code to make them pass
 - Do not add features, optimizations, or UI polish beyond what the
   tests require
+- Do not modify any module unrelated to the current failing tests
+- Update .cursor-state.md with phase = GREEN
 
 ### REFACTOR (Clean and secure)
 - Once tests pass, review the implementation for:
@@ -40,6 +55,18 @@ the Red-Green-Refactor cycle strictly:
   - Architectural boundary violations
   - Missing Quick Exit integration
 - Refactor cleanly, then confirm all tests still pass
+- Update .cursor-state.md with phase = REFACTOR and findings
+
+### Pre-Execution Hooks
+- Before editing ANY implementation file, check: does a corresponding
+  .test.ts file exist with a currently-failing test?
+- If no failing test exists, HALT. Return to RED phase.
+- This is non-negotiable. No implementation without specification.
+
+### Differential Diagnosis
+- Before fixing any bug, you MUST output: "Let me make sure this is
+  really the issue" and analyze the root cause before writing code.
+- Do not pattern-match a fix. Understand the causal chain first.
 
 ---
 
