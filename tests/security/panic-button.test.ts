@@ -256,6 +256,98 @@ describe('Panic Button: Trauma-Informed Rapid Escape', () => {
   });
 
   // ──────────────────────────────────────────
+  // Sequence Detection (the core safety logic)
+  // ──────────────────────────────────────────
+
+  describe('Sequence Detection', () => {
+    function createSequenceTestRig() {
+      const env = setupDom();
+      let capturedHandler: ((event: any) => void) | null = null;
+
+      const mockListenerDoc = {
+        addEventListener: vi.fn((event: string, handler: any) => {
+          capturedHandler = handler;
+        }),
+        removeEventListener: vi.fn(),
+      };
+
+      createExitListener(mockListenerDoc, env.document as any, env.window as any);
+
+      function pressKey(key: string) {
+        capturedHandler!({
+          key,
+          stopPropagation: vi.fn(),
+          preventDefault: vi.fn(),
+        });
+      }
+
+      return { env, pressKey };
+    }
+
+    it('should NOT trigger exit on a single Escape press', () => {
+      const { env, pressKey } = createSequenceTestRig();
+      pressKey('Escape');
+      expect(env.document.body.innerHTML).not.toBe('');
+    });
+
+    it('should NOT trigger exit on two Escape presses', () => {
+      const { env, pressKey } = createSequenceTestRig();
+      pressKey('Escape');
+      pressKey('Escape');
+      expect(env.document.body.innerHTML).not.toBe('');
+    });
+
+    it('should trigger exit on three consecutive Escape presses', () => {
+      const { env, pressKey } = createSequenceTestRig();
+      pressKey('Escape');
+      pressKey('Escape');
+      pressKey('Escape');
+      expect(env.document.body.innerHTML).toBe('');
+      expect(env.window.history.replaceState).toHaveBeenCalled();
+      expect(env.window.location.replace).toHaveBeenCalled();
+    });
+
+    it('should reset sequence when a non-Escape key is pressed', () => {
+      const { env, pressKey } = createSequenceTestRig();
+      pressKey('Escape');
+      pressKey('Escape');
+      pressKey('a');
+      pressKey('Escape');
+      expect(env.document.body.innerHTML).not.toBe('');
+    });
+
+    it('should reset sequence when presses are too slow (timeout)', () => {
+      const { env, pressKey } = createSequenceTestRig();
+
+      const now = Date.now();
+      vi.spyOn(Date, 'now')
+        .mockReturnValueOnce(now)
+        .mockReturnValueOnce(now + 2000)
+        .mockReturnValueOnce(now + 2000)
+        .mockReturnValueOnce(now + 2100);
+
+      pressKey('Escape');
+      pressKey('Escape');
+      pressKey('Escape');
+      expect(env.document.body.innerHTML).not.toBe('');
+
+      vi.restoreAllMocks();
+    });
+
+    it('should reset after successful exit and require full sequence again', () => {
+      const { env, pressKey } = createSequenceTestRig();
+      pressKey('Escape');
+      pressKey('Escape');
+      pressKey('Escape');
+      expect(env.document.body.innerHTML).toBe('');
+
+      env.document.body.innerHTML = '<div>Restored</div>';
+      pressKey('Escape');
+      expect(env.document.body.innerHTML).toBe('<div>Restored</div>');
+    });
+  });
+
+  // ──────────────────────────────────────────
   // Execution Order
   // ──────────────────────────────────────────
 

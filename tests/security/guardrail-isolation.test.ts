@@ -17,7 +17,7 @@ import { evaluateSymbolicGate } from '../../src/core/symbolic-guardrails/ruleEng
 import { createAuditEntry } from '../../src/core/symbolic-guardrails/auditLogger.js';
 import { sanitizeOutput } from '../../src/core/symbolic-guardrails/sanitizer.js';
 import { DEFAULT_RAIL_SPEC } from '../../src/core/symbolic-guardrails/railSpec.js';
-import type { SymbolicFeatureSet, GateResult, AuditEntry } from '../../src/core/symbolic-guardrails/types.js';
+import type { SymbolicFeatureSet, GateResult } from '../../src/core/symbolic-guardrails/types.js';
 
 // ──────────────────────────────────────────
 // Helpers
@@ -171,6 +171,44 @@ describe('Guardrail Isolation: Neuro-Symbolic Defense', () => {
       expect(entry.triggerBehavior).toBeTruthy();
       expect(entry.symbolicVerdict).toBe('REJECT');
       expect(entry.timestamp).toBeTruthy();
+    });
+
+    it('should handle QUARANTINE verdict in audit entry', async () => {
+      const features = makeFeatureSet({ rawPayload: 'suspicious but not confirmed' });
+      const quarantineResult: GateResult = {
+        verdict: 'QUARANTINE',
+        policyId: 'SUSPICIOUS_PATTERN',
+        triggerBehavior: 'ANOMALY_DETECTED',
+        processingTimeMs: 1,
+      };
+      const entry = await createAuditEntry(quarantineResult, features, 0.6);
+      expect(entry.action).toBe('QUARANTINED');
+      expect(entry.symbolicVerdict).toBe('QUARANTINE');
+    });
+
+    it('should handle null policyId/triggerBehavior with UNKNOWN fallback', async () => {
+      const features = makeFeatureSet({ rawPayload: 'edge case payload' });
+      const nullResult: GateResult = {
+        verdict: 'REJECT',
+        policyId: null,
+        triggerBehavior: null,
+        processingTimeMs: 1,
+      };
+      const entry = await createAuditEntry(nullResult, features, 0.5);
+      expect(entry.policyId).toBe('UNKNOWN');
+      expect(entry.triggerBehavior).toBe('UNKNOWN');
+    });
+
+    it('should trigger NEURAL_THREAT_ESCALATION when payload has no pattern match but high neural confidence', () => {
+      const features = makeFeatureSet({
+        rawPayload: 'innocuous looking text with no pattern matches',
+        features: [{ conceptId: 'SUBTLE_THREAT', confidence: 0.85, source: 'neural' as const }],
+      });
+      const result = evaluateSymbolicGate(features, DEFAULT_RAIL_SPEC);
+      expect(result.verdict).toBe('REJECT');
+      expect(result.policyId).toBe('NEURAL_THREAT_ESCALATION');
+      expect(result.triggerBehavior).toContain('SUBTLE_THREAT');
+      expect(result.triggerBehavior).toContain('0.85');
     });
   });
 
