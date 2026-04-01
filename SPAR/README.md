@@ -43,7 +43,8 @@ SPAR/
 │   ├── 03-blind-key-protocol.md (privacy engineering strategy)
 │   ├── 04-tdd-directives.md     (test-driven development mandates and .cursorrules)
 │   ├── 05-agent-automations.md  (Cursor agent automation strategies)
-│   └── 06-rules-automations-skills.md (comprehensive analysis: 8 rules, 6 automations, 6 skills)
+│   ├── 06-rules-automations-skills.md (comprehensive analysis: 8 rules, 6 automations, 6 skills)
+│   └── 07-next-steps.md              (two-path roadmap: deepen testing + build application)
 ├── Act/
 │   ├── 01-prototypes.md         (three parallel builds: Cursor, Stitch, Gemini)
 │   ├── 02-hashing-implementation.md (real SHA-256 client-side hashing)
