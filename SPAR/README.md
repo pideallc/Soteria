@@ -44,7 +44,8 @@ SPAR/
 │   ├── 04-tdd-directives.md     (test-driven development mandates and .cursorrules)
 │   ├── 05-agent-automations.md  (Cursor agent automation strategies)
 │   ├── 06-rules-automations-skills.md (comprehensive analysis: 8 rules, 6 automations, 6 skills)
-│   └── 07-next-steps.md              (two-path roadmap: deepen testing + build application)
+│   ├── 07-next-steps.md              (two-path roadmap: deepen testing + build application)
+│   └── 08-execution-plan-phase2.md   (comprehensive phase 2: fix foundation, then build)
 ├── Act/
 │   ├── 01-prototypes.md         (three parallel builds: Cursor, Stitch, Gemini)
 │   ├── 02-hashing-implementation.md (real SHA-256 client-side hashing)
