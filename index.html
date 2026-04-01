@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soteria | AI-First Feminist Cybersecurity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFCFB;
+            color: #1C1917;
+            scroll-behavior: smooth;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            height: 380px;
+        }
+        .glass-panel {
+            background: rgba(253, 252, 251, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .soteria-gradient {
+            background: linear-gradient(135deg, #9D174D 0%, #134E4A 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #9D174D, #6366F1, #134E4A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .btn-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+        }
+        .privacy-glow {
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.08);
+        }
+        .card-lift {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+        }
+        .scenario-btn.active {
+            border-color: #9D174D;
+            background-color: rgba(157, 23, 77, 0.04);
+        }
+        input:focus {
+            outline: none;
+        }
+        .hero-mesh {
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(157, 23, 77, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(19, 78, 74, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 60% 80%, rgba(99, 102, 241, 0.02) 0%, transparent 40%);
+        }
+        .section-fade {
+            animation: sectionFadeIn 0.6s ease-out;
+        }
+        @keyframes sectionFadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .pulse-dot {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .hash-cascade {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="selection:bg-rose-100 selection:text-rose-900">
+
+    <!-- ========================================== -->
+    <!-- NAVIGATION                                 -->
+    <!-- ========================================== -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-stone-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="#vision" class="flex items-center space-x-2.5 group">
+                    <div class="w-10 h-10 soteria-gradient rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-shadow">S</div>
+                    <span class="text-2xl font-extrabold tracking-tighter text-stone-900">SOTERIA</span>
+                </a>
+                <div class="hidden lg:flex space-x-10 text-[10px] font-black tracking-[0.15em] text-stone-500 uppercase">
+                    <a href="#vision" class="hover:text-rose-800 transition-colors py-1">Vision</a>
+                    <a href="#intelligence" class="hover:text-rose-800 transition-colors py-1">Intelligence</a>
+                    <a href="#architecture" class="hover:text-rose-800 transition-colors py-1">Architecture</a>
+                    <a href="#protocol" class="hover:text-rose-800 transition-colors py-1">Protocol</a>
+                    <a href="#operations" class="hover:text-rose-800 transition-colors py-1">Operations</a>
+                    <a href="#pioneers" class="hover:text-rose-800 transition-colors py-1">Pioneers</a>
+                </div>
+                <a href="#vault" class="px-6 py-2.5 rounded-full soteria-gradient text-white text-[10px] font-black uppercase tracking-[0.15em] btn-hover shadow-lg">Join Waitlist</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: HERO / VISION                   -->
+    <!-- ========================================== -->
+    <section id="vision" class="pt-36 pb-28 px-4 hero-mesh min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-rose-50 text-rose-800 text-[10px] font-black tracking-[0.15em] uppercase mb-8 border border-rose-100">Deliverance from Digital Violence</span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-stone-900 leading-[1.05] mb-8">
+                        The Goddess of <span class="text-gradient">Safety</span> for the AI Era.
+                    </h1>
+                    <p class="text-lg text-stone-600 leading-relaxed mb-10 max-w-xl">
+                        Soteria is an AI-first cybersecurity ecosystem grounded in sex-positive feminist principles and the absolute right to operational security. We replace the "fortress" model with a model of communal care &mdash; protecting bodies, identities, and autonomy.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-14">
+                        <a href="#intelligence" class="px-8 py-4 bg-stone-900 text-white rounded-xl font-bold btn-hover text-center">Explore the Ecosystem</a>
+                        <a href="#protocol" class="px-8 py-4 bg-white border border-stone-200 text-stone-900 rounded-xl font-bold btn-hover text-center">Technical Protocol</a>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="p-4 bg-white/70 border border-stone-100 rounded-2xl card-lift">
+                            <div class="text-xl mb-2">&#129504;</div>
+                            <h4 class="font-bold text-stone-900 text-sm mb-1">Metis Wisdom</h4>
+                            <p class="text-[10px] text-stone-500 leading-relaxed">Adaptive cunning intelligence meets deterministic logic.</p>
+                        </div>
+                        <div class="p-4 bg-white/70 border border-stone-100 rounded-2xl card-lift">
+                            <div class="text-xl mb-2">&#128737;</div>
+                            <h4 class="font-bold text-stone-900 text-sm mb-1">Artemis Shield</h4>
+                            <p class="text-[10px] text-stone-500 leading-relaxed">Proactive protection for the most vulnerable super users.</p>
+                        </div>
+                        <div class="p-4 bg-white/70 border border-stone-100 rounded-2xl card-lift">
+                            <div class="text-xl mb-2">&#128274;</div>
+                            <h4 class="font-bold text-stone-900 text-sm mb-1">Blind Key</h4>
+                            <p class="text-[10px] text-stone-500 leading-relaxed">Zero-knowledge architecture protects you even from us.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center justify-center">
+                    <div class="relative">
+                        <div class="w-72 h-72 rounded-[3rem] bg-rose-50 border border-rose-100 flex items-center justify-center rotate-3 shadow-2xl">
+                            <div class="w-48 h-48 soteria-gradient rounded-full flex items-center justify-center text-white text-8xl font-black shadow-inner -rotate-3">S</div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 px-5 py-3 bg-stone-900 text-white rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl">
+                            <span class="inline-block w-2 h-2 bg-emerald-400 rounded-full mr-2 pulse-dot"></span>System Active
+                        </div>
+                        <div class="absolute -top-4 -left-4 px-4 py-2 bg-white border border-stone-200 rounded-xl text-[10px] font-bold text-stone-500 uppercase tracking-widest shadow-lg">
+                            Neural + Symbolic
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: THE INTELLIGENCE GAP            -->
+    <!-- ========================================== -->
+    <section id="intelligence" class="py-28 bg-stone-50 border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <span class="text-rose-700 font-black text-[10px] uppercase tracking-[0.2em] mb-4 block">Threat Intelligence</span>
+                <h2 class="text-4xl font-extrabold text-stone-900 mb-4">Shifting the Threat Model</h2>
+                <p class="text-stone-600 max-w-2xl leading-relaxed">Traditional security protects servers. Soteria protects people. By pivoting the threat model toward gendered digital violence, we uncover vulnerabilities traditional networks ignore entirely.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- Radar Chart -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 card-lift">
+                    <h3 class="text-center text-[10px] font-black text-stone-400 uppercase tracking-[0.15em] mb-8">Mainstream Industry vs. Soteria Ecosystem</h3>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+                <!-- Comparison Cards -->
+                <div class="flex flex-col justify-center space-y-6">
+                    <div class="p-6 bg-white rounded-2xl border-l-4 border-stone-300 shadow-sm">
+                        <h4 class="font-bold text-stone-900 mb-2">Mainstream Threat Model</h4>
+                        <p class="text-sm text-stone-600 italic leading-relaxed">"The user is the weakest link. Secure the server, blame the victim for password fatigue. Assume the perimeter is the boundary of trust."</p>
+                        <div class="flex gap-2 mt-4">
+                            <span class="px-3 py-1 bg-stone-100 rounded text-[9px] font-bold text-stone-500 uppercase">Perimeter Defense</span>
+                            <span class="px-3 py-1 bg-stone-100 rounded text-[9px] font-bold text-stone-500 uppercase">User Blame</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border-l-4 border-rose-600 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-2 right-4 text-rose-100 font-black text-5xl opacity-20">S</div>
+                        <h4 class="font-bold text-rose-800 mb-2">Soteria Threat Model</h4>
+                        <p class="text-sm text-stone-600 italic leading-relaxed">"The system is the failure. Security is communal care. Automate the burden of OPSEC. Protect the person behind the screen, not just the screen."</p>
+                        <div class="flex gap-2 mt-4">
+                            <span class="px-3 py-1 bg-rose-50 rounded text-[9px] font-bold text-rose-600 uppercase">Communal Care</span>
+                            <span class="px-3 py-1 bg-teal-50 rounded text-[9px] font-bold text-teal-600 uppercase">Zero Blame</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats & Threat Tags -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-rose-50 rounded-2xl border border-rose-100 card-lift">
+                    <div class="text-3xl font-extrabold text-rose-700">95%</div>
+                    <div class="text-[10px] uppercase tracking-[0.15em] text-rose-600 font-bold mt-1">OPSEC Labor Automated</div>
+                </div>
+                <div class="text-center p-6 bg-teal-50 rounded-2xl border border-teal-100 card-lift">
+                    <div class="text-3xl font-extrabold text-teal-700">Zero</div>
+                    <div class="text-[10px] uppercase tracking-[0.15em] text-teal-600 font-bold mt-1">User Blame</div>
+                </div>
+                <div class="text-center p-6 bg-indigo-50 rounded-2xl border border-indigo-100 card-lift">
+                    <div class="text-3xl font-extrabold text-indigo-700">SHA-256</div>
+                    <div class="text-[10px] uppercase tracking-[0.15em] text-indigo-600 font-bold mt-1">Client-Side Privacy</div>
+                </div>
+                <div class="text-center p-6 bg-amber-50 rounded-2xl border border-amber-100 card-lift">
+                    <div class="text-3xl font-extrabold text-amber-700">24/7</div>
+                    <div class="text-[10px] uppercase tracking-[0.15em] text-amber-600 font-bold mt-1">Neural Threat Watch</div>
+                </div>
+            </div>
+
+            <!-- Neutralizing Gendered Violence Block -->
+            <div class="mt-16 p-8 md:p-12 bg-stone-900 text-white rounded-3xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-extrabold mb-4">Neutralizing Gendered Violence</h3>
+                        <p class="text-stone-400 leading-relaxed mb-6">Our neural models prioritize high-stakes edge cases like stalkerware, doxxing, and financial abuse &mdash; threats often dismissed as "personal issues" by enterprise vendors. These are not edge cases. They are the front line.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-rose-900/40 rounded-lg text-[10px] font-bold text-rose-300 uppercase tracking-wider">OPSEC_01: Stalkerware</span>
+                            <span class="px-4 py-2 bg-teal-900/40 rounded-lg text-[10px] font-bold text-teal-300 uppercase tracking-wider">OPSEC_02: Doxxing</span>
+                            <span class="px-4 py-2 bg-indigo-900/40 rounded-lg text-[10px] font-bold text-indigo-300 uppercase tracking-wider">OPSEC_03: Financial Abuse</span>
+                            <span class="px-4 py-2 bg-amber-900/40 rounded-lg text-[10px] font-bold text-amber-300 uppercase tracking-wider">OPSEC_04: Device Seizure</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-5 bg-white/5 border border-white/10 rounded-2xl">
+                            <div class="text-2xl mb-3">&#128179;</div>
+                            <h5 class="font-bold text-sm mb-1">Financial Inclusion</h5>
+                            <p class="text-[10px] text-stone-400 leading-relaxed">Preventing account lockouts during high-risk escapes. Shadow account protocols.</p>
+                        </div>
+                        <div class="p-5 bg-white/5 border border-white/10 rounded-2xl">
+                            <div class="text-2xl mb-3">&#128101;</div>
+                            <h5 class="font-bold text-sm mb-1">Identity Segregation</h5>
+                            <p class="text-[10px] text-stone-400 leading-relaxed">Airtight separation of personas across every surface area.</p>
+                        </div>
+                        <div class="p-5 bg-white/5 border border-white/10 rounded-2xl">
+                            <div class="text-2xl mb-3">&#128065;</div>
+                            <h5 class="font-bold text-sm mb-1">Surveillance Detection</h5>
+                            <p class="text-[10px] text-stone-400 leading-relaxed">Real-time behavioral analysis of background process anomalies.</p>
+                        </div>
+                        <div class="p-5 bg-white/5 border border-white/10 rounded-2xl">
+                            <div class="text-2xl mb-3">&#128272;</div>
+                            <h5 class="font-bold text-sm mb-1">Non-Coercive Auth</h5>
+                            <p class="text-[10px] text-stone-400 leading-relaxed">Biometric signals that cannot be extracted under duress.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 3: NEURAL-SYMBOLIC ARCHITECTURE    -->
+    <!-- ========================================== -->
+    <section id="architecture" class="py-28 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-teal-700 font-black text-[10px] uppercase tracking-[0.2em] mb-4 block">System Design</span>
+                <h2 class="text-4xl font-extrabold text-stone-900 mb-4">Neural-Symbolic Architecture</h2>
+                <p class="text-stone-600 max-w-2xl mx-auto leading-relaxed">The synthesis of adaptive neural intelligence and deterministic symbolic guardrails. Intuition detects the ghost; logic builds the wall.</p>
+            </div>
+
+            <!-- Three Column Architecture -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16">
+                <!-- Neural Layer -->
+                <div class="p-8 bg-stone-900 text-white rounded-3xl flex flex-col justify-between card-lift">
+                    <div>
+                        <div class="text-3xl mb-4">&#129504;</div>
+                        <h3 class="text-xl font-bold mb-3 text-rose-400">Adaptive Neural Layer</h3>
+                        <p class="text-sm text-stone-400 leading-relaxed mb-6">Continuous threat-modeling of emerging patterns. Detects doxxing campaigns and stalkerware signatures before they are codified into known databases.</p>
+                        <ul class="space-y-3 text-xs text-stone-500">
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 bg-rose-500 rounded-full mt-1.5 shrink-0"></span>
+                                <span>Behavioral anomaly detection across app ecosystems</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 bg-rose-500 rounded-full mt-1.5 shrink-0"></span>
+                                <span>Zero-day stalkerware pattern recognition</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 bg-rose-500 rounded-full mt-1.5 shrink-0"></span>
+                                <span>Contextual threat escalation scoring</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-stone-800 flex justify-between items-center">
+                        <span class="text-[9px] uppercase tracking-wider text-stone-600 font-bold">Processing: Real-time Behavioral</span>
+                        <div class="w-3 h-3 bg-rose-500 rounded-full pulse-dot"></div>
+                    </div>
+                </div>
+
+                <!-- The Synthesis -->
+                <div class="p-8 bg-white border border-stone-200 rounded-3xl relative flex flex-col items-center justify-center text-center card-lift overflow-hidden">
+                    <div class="w-full h-px bg-gradient-to-r from-rose-600 via-indigo-500 to-teal-600 absolute top-1/2 left-0 -translate-y-1/2 opacity-20"></div>
+                    <div class="z-10">
+                        <div class="w-20 h-20 soteria-gradient rounded-2xl mx-auto mb-6 rotate-45 flex items-center justify-center shadow-xl">
+                            <span class="text-white font-bold text-3xl -rotate-45">&#10010;</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">The Synthesis</h3>
+                        <p class="text-[10px] text-stone-500 uppercase tracking-[0.15em] mb-6 font-bold">Bridging Intuition & Logic</p>
+                        <p class="text-sm text-stone-600 italic leading-relaxed mb-6">"Intuition detects the ghost; Logic builds the wall."</p>
+                        <div class="space-y-3">
+                            <div class="px-4 py-2 bg-stone-50 rounded-lg text-[10px] font-bold text-stone-600">
+                                Neural Output &rarr; Symbolic Validation &rarr; Action
+                            </div>
+                            <div class="px-4 py-2 bg-stone-50 rounded-lg text-[10px] font-bold text-stone-600">
+                                No false positives that alert abusers
+                            </div>
+                            <div class="px-4 py-2 bg-stone-50 rounded-lg text-[10px] font-bold text-stone-600">
+                                Every action passes ethics guardrails
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Symbolic Layer -->
+                <div class="p-8 bg-stone-900 text-white rounded-3xl flex flex-col justify-between card-lift">
+                    <div>
+                        <div class="text-3xl mb-4">&#128274;</div>
+                        <h3 class="text-xl font-bold mb-3 text-teal-400">Symbolic Guardrails</h3>
+                        <p class="text-sm text-stone-400 leading-relaxed mb-6">Hardcoded safety protocols grounded in feminist principles. Inviolable rules regarding identity segregation, data sovereignty, and non-coercive authentication.</p>
+                        <ul class="space-y-3 text-xs text-stone-500">
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 bg-teal-500 rounded-full mt-1.5 shrink-0"></span>
+                                <span>Immutable identity partition boundaries</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 bg-teal-500 rounded-full mt-1.5 shrink-0"></span>
+                                <span>Duress-aware biometric verification</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 bg-teal-500 rounded-full mt-1.5 shrink-0"></span>
+                                <span>Deterministic data-sovereignty enforcement</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-stone-800 flex justify-between items-center">
+                        <span class="text-[9px] uppercase tracking-wider text-stone-600 font-bold">Processing: Deterministic Logic</span>
+                        <div class="w-3 h-3 bg-teal-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Architecture Data Flow -->
+            <div class="bg-stone-50 p-8 md:p-12 rounded-3xl border border-stone-200">
+                <h3 class="text-center text-[10px] font-black text-stone-400 uppercase tracking-[0.15em] mb-10">System Data Flow</h3>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+                    <div class="p-4 bg-white rounded-2xl border border-stone-200 text-center">
+                        <div class="text-lg mb-2">&#128241;</div>
+                        <p class="text-[10px] font-bold text-stone-700 uppercase">User Device</p>
+                        <p class="text-[9px] text-stone-400 mt-1">Local encryption layer</p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-center text-stone-300 text-2xl">&rarr;</div>
+                    <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100 text-center">
+                        <div class="text-lg mb-2">&#129504;</div>
+                        <p class="text-[10px] font-bold text-rose-700 uppercase">Neural Analysis</p>
+                        <p class="text-[9px] text-stone-400 mt-1">Threat detection & scoring</p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-center text-stone-300 text-2xl">&rarr;</div>
+                    <div class="p-4 bg-teal-50 rounded-2xl border border-teal-100 text-center">
+                        <div class="text-lg mb-2">&#128274;</div>
+                        <p class="text-[10px] font-bold text-teal-700 uppercase">Symbolic Validation</p>
+                        <p class="text-[9px] text-stone-400 mt-1">Ethics & rule enforcement</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center mt-4">
+                    <div class="md:col-start-1 p-4 bg-white rounded-2xl border border-stone-200 text-center">
+                        <div class="text-lg mb-2">&#9989;</div>
+                        <p class="text-[10px] font-bold text-stone-700 uppercase">Safe Action</p>
+                        <p class="text-[9px] text-stone-400 mt-1">Ghost data, partition, alert</p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-center text-stone-300 text-2xl">&larr;</div>
+                    <div class="p-4 bg-indigo-50 rounded-2xl border border-indigo-100 text-center">
+                        <div class="text-lg mb-2">&#128736;</div>
+                        <p class="text-[10px] font-bold text-indigo-700 uppercase">Action Engine</p>
+                        <p class="text-[9px] text-stone-400 mt-1">Context-aware response</p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-center text-stone-300 text-2xl">&larr;</div>
+                    <div class="p-4 bg-amber-50 rounded-2xl border border-amber-100 text-center">
+                        <div class="text-lg mb-2">&#128200;</div>
+                        <p class="text-[10px] font-bold text-amber-700 uppercase">Risk Assessment</p>
+                        <p class="text-[9px] text-stone-400 mt-1">Combined neural + symbolic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 4: THE BLIND KEY PROTOCOL          -->
+    <!-- ========================================== -->
+    <section id="protocol" class="py-28 bg-stone-50 border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-indigo-700 font-black text-[10px] uppercase tracking-[0.2em] mb-4 block">Privacy Engineering</span>
+                <h2 class="text-4xl font-extrabold text-stone-900 mb-4">The Blind Key Protocol</h2>
+                <p class="text-stone-600 max-w-2xl mx-auto leading-relaxed">To protect you even from our own team, we use client-side cryptographic hashing. Your browser generates a unique SHA-256 fingerprint. The real data never leaves your device.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+                <div>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 p-5 bg-indigo-50 border border-indigo-100 rounded-2xl">
+                            <div class="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                            <div>
+                                <h4 class="font-bold text-indigo-900 mb-1">Client-Side Transformation</h4>
+                                <p class="text-sm text-indigo-700/70">Your email is hashed in your browser using the Web Crypto API. The plaintext never touches our servers.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-5 bg-teal-50 border border-teal-100 rounded-2xl">
+                            <div class="w-10 h-10 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                            <div>
+                                <h4 class="font-bold text-teal-900 mb-1">Irreversible One-Way Function</h4>
+                                <p class="text-sm text-teal-700/70">SHA-256 is a cryptographic hash &mdash; the original input cannot be reconstructed from the output. It is computationally infeasible to reverse.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-5 bg-rose-50 border border-rose-100 rounded-2xl">
+                            <div class="w-10 h-10 bg-rose-600 text-white rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                            <div>
+                                <h4 class="font-bold text-rose-900 mb-1">Blind Communication</h4>
+                                <p class="text-sm text-rose-700/70">"We can communicate with you via the Key, but we never see the Person." Even a database breach reveals nothing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Hashing Sandbox -->
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-stone-200 privacy-glow">
+                    <h3 class="text-[10px] font-black text-indigo-600 uppercase tracking-[0.15em] mb-8">Live Privacy Engine: SHA-256</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-[10px] font-black text-stone-500 uppercase tracking-wider mb-2">Your Input (Stays in Browser)</label>
+                            <input type="text" id="live-email-input" placeholder="you@example.com" class="w-full p-4 bg-stone-50 border border-stone-200 rounded-xl mono text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all">
+                        </div>
+                        <div class="flex items-center justify-center py-2">
+                            <div class="flex items-center gap-2 text-stone-400">
+                                <span class="text-lg">&darr;</span>
+                                <span class="text-[9px] font-bold uppercase tracking-widest">SHA-256 Transform</span>
+                                <span class="text-lg">&darr;</span>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-stone-900 rounded-2xl">
+                            <label class="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-2">Team View (Public Blind Key)</label>
+                            <div id="hash-output" class="mono text-teal-400 text-[11px] break-all leading-relaxed min-h-[48px] flex items-center hash-cascade">
+                                Awaiting user input...
+                            </div>
+                        </div>
+                        <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-xl">
+                            <p class="text-[10px] text-emerald-800 font-semibold leading-relaxed">Even if our entire database is compromised, an attacker cannot reverse these hashes to discover your email address.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 5: OPERATIONAL SCENARIOS           -->
+    <!-- ========================================== -->
+    <section id="operations" class="py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <span class="text-rose-700 font-black text-[10px] uppercase tracking-[0.2em] mb-4 block">Operational Security</span>
+                <h2 class="text-4xl font-extrabold text-stone-900 mb-4">Frictionless OPSEC in Action</h2>
+                <p class="text-stone-600 max-w-2xl leading-relaxed">How Soteria handles high-stakes, highly vulnerable super users without the technical friction that leads to security burnout. Select a scenario below.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+                <!-- Scenario Selector -->
+                <div class="lg:col-span-2 space-y-4" id="scenario-list">
+                    <button class="scenario-btn active w-full text-left p-6 bg-white rounded-2xl border border-stone-200 transition-all hover:border-rose-300 group" data-scenario="stalker">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-bold text-stone-800 group-hover:text-rose-700">Stalkerware Mitigation</span>
+                            <span class="text-[9px] text-stone-400 font-bold uppercase tracking-wider shrink-0 ml-4">Scenario 01</span>
+                        </div>
+                        <p class="text-[11px] text-stone-500 leading-relaxed">Detecting and neutralizing covert surveillance apps without alerting the abuser.</p>
+                    </button>
+                    <button class="scenario-btn w-full text-left p-6 bg-white rounded-2xl border border-stone-200 transition-all hover:border-rose-300 group" data-scenario="identity">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-bold text-stone-800 group-hover:text-rose-700">Identity Segregation</span>
+                            <span class="text-[9px] text-stone-400 font-bold uppercase tracking-wider shrink-0 ml-4">Scenario 02</span>
+                        </div>
+                        <p class="text-[11px] text-stone-500 leading-relaxed">Airtight persona separation for journalists, activists, and at-risk individuals crossing borders.</p>
+                    </button>
+                    <button class="scenario-btn w-full text-left p-6 bg-white rounded-2xl border border-stone-200 transition-all hover:border-rose-300 group" data-scenario="financial">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-bold text-stone-800 group-hover:text-rose-700">Financial Sovereignty</span>
+                            <span class="text-[9px] text-stone-400 font-bold uppercase tracking-wider shrink-0 ml-4">Scenario 03</span>
+                        </div>
+                        <p class="text-[11px] text-stone-500 leading-relaxed">Shadow account protocols that protect assets during high-risk separations.</p>
+                    </button>
+                    <button class="scenario-btn w-full text-left p-6 bg-white rounded-2xl border border-stone-200 transition-all hover:border-rose-300 group" data-scenario="doxxing">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-bold text-stone-800 group-hover:text-rose-700">Doxxing Defense</span>
+                            <span class="text-[9px] text-stone-400 font-bold uppercase tracking-wider shrink-0 ml-4">Scenario 04</span>
+                        </div>
+                        <p class="text-[11px] text-stone-500 leading-relaxed">Proactive personal data scrubbing and coordinated takedown across data brokers.</p>
+                    </button>
+                </div>
+
+                <!-- Scenario Display -->
+                <div class="lg:col-span-3">
+                    <div id="scenario-display" class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-stone-200 min-h-[520px] flex flex-col transition-opacity duration-300">
+                        <div class="flex-grow">
+                            <div class="flex items-center space-x-3 mb-8">
+                                <div class="w-2 h-2 bg-rose-600 rounded-full pulse-dot"></div>
+                                <span class="text-[10px] uppercase font-black tracking-[0.15em] text-stone-400">Active Simulation</span>
+                            </div>
+                            <h3 id="scen-title" class="text-2xl font-extrabold mb-6 text-stone-900">Stalkerware Mitigation</h3>
+                            <div class="space-y-6">
+                                <div class="p-5 bg-stone-50 rounded-xl border border-stone-100">
+                                    <h4 class="text-[10px] font-black text-stone-500 uppercase tracking-wider mb-3">Phase 1: Detection</h4>
+                                    <p id="scen-detect" class="text-sm text-stone-700 leading-relaxed">Neural layer identifies a "Child Monitoring" app exfiltrating camera feed metadata to an unauthorized residential IP address via a hidden proxy connection.</p>
+                                </div>
+                                <div class="p-5 bg-rose-50 rounded-xl border border-rose-100">
+                                    <h4 class="text-[10px] font-black text-rose-600 uppercase tracking-wider mb-3">Phase 2: Soteria Protocol</h4>
+                                    <p id="scen-action" class="text-sm text-stone-700 leading-relaxed">Instead of alert removal (which tips off the abuser), Soteria uses Symbolic Logic to map all of the abuser's access points. It redirects the camera feed to an AI-generated "Static Room" loop, maintaining the abuser's illusion of control while the user safely transitions to clean devices.</p>
+                                </div>
+                                <div class="p-5 bg-teal-50 rounded-xl border border-teal-100">
+                                    <h4 class="text-[10px] font-black text-teal-600 uppercase tracking-wider mb-3">Phase 3: Resolution</h4>
+                                    <p id="scen-resolve" class="text-sm text-stone-700 leading-relaxed">Full device audit logged. Clean migration pathway established. Incident report generated in format accepted by law enforcement and domestic violence advocates. Ongoing monitoring active.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 6: PIONEERS / THE GROUND GAME      -->
+    <!-- ========================================== -->
+    <section id="pioneers" class="py-28 bg-stone-50 border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-amber-700 font-black text-[10px] uppercase tracking-[0.2em] mb-4 block">Community & Research</span>
+                <h2 class="text-4xl font-extrabold text-stone-900 mb-4">The Ground Game</h2>
+                <p class="text-stone-600 max-w-2xl mx-auto leading-relaxed">Project Soteria is built on the shoulders of activists and researchers who have been defining this discourse for years. We build with them, not above them.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="p-6 bg-white border border-stone-100 rounded-3xl shadow-sm card-lift">
+                    <div class="w-12 h-12 bg-rose-50 text-rose-700 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">C</div>
+                    <h4 class="font-bold text-stone-900 mb-2">Chayn</h4>
+                    <p class="text-xs text-stone-500 leading-relaxed mb-4">Masterclasses in trauma-informed, highly accessible UX for women actively compromised. Their open-source tools inform our interaction design.</p>
+                    <span class="text-[9px] font-bold text-rose-600 uppercase tracking-wider">UX & Trauma-Informed Design</span>
+                </div>
+                <div class="p-6 bg-white border border-stone-100 rounded-3xl shadow-sm card-lift">
+                    <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">H</div>
+                    <h4 class="font-bold text-stone-900 mb-2">Hackblossom</h4>
+                    <p class="text-xs text-stone-500 leading-relaxed mb-4">Creators of the DIY Guide to Feminist Cybersecurity. Demystifying tech jargon and making OPSEC accessible to everyone, everywhere.</p>
+                    <span class="text-[9px] font-bold text-teal-600 uppercase tracking-wider">Education & Accessibility</span>
+                </div>
+                <div class="p-6 bg-white border border-stone-100 rounded-3xl shadow-sm card-lift">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-700 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">R</div>
+                    <h4 class="font-bold text-stone-900 mb-2">Reconfigure (OII)</h4>
+                    <p class="text-xs text-stone-500 leading-relaxed mb-4">Oxford Internet Institute researchers focusing on security as communal care. Their frameworks shape our understanding of networked safety.</p>
+                    <span class="text-[9px] font-bold text-indigo-600 uppercase tracking-wider">Research & Frameworks</span>
+                </div>
+                <div class="p-6 bg-white border border-stone-100 rounded-3xl shadow-sm card-lift">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-700 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">A</div>
+                    <h4 class="font-bold text-stone-900 mb-2">APC</h4>
+                    <p class="text-xs text-stone-500 leading-relaxed mb-4">Drafters of the Feminist Principles of the Internet. Privacy as a human right, not a commodity. Their policy work grounds our ethics.</p>
+                    <span class="text-[9px] font-bold text-amber-600 uppercase tracking-wider">Policy & Ethics</span>
+                </div>
+            </div>
+
+            <!-- Principles Grid -->
+            <div class="bg-white p-8 md:p-12 rounded-3xl border border-stone-200 shadow-sm">
+                <h3 class="text-center text-[10px] font-black text-stone-400 uppercase tracking-[0.15em] mb-10">Core Feminist Principles in Practice</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">&#9829;</div>
+                        <h4 class="font-bold text-stone-900 mb-2">Communal Care</h4>
+                        <p class="text-xs text-stone-500 leading-relaxed">Security is not individual responsibility. It is a collective infrastructure. Your safety network strengthens everyone's.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">&#128170;</div>
+                        <h4 class="font-bold text-stone-900 mb-2">Bodily Autonomy</h4>
+                        <p class="text-xs text-stone-500 leading-relaxed">Digital autonomy is an extension of bodily autonomy. Control over your data is control over your self.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">&#127760;</div>
+                        <h4 class="font-bold text-stone-900 mb-2">Radical Accessibility</h4>
+                        <p class="text-xs text-stone-500 leading-relaxed">No jargon gatekeeping. No expertise requirements. Security tools must work for the least technically literate user.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 7: THE VAULT / SIGNUP              -->
+    <!-- ========================================== -->
+    <section id="vault" class="py-28 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-stone-900 text-white p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(157,23,77,0.15),transparent_70%)]"></div>
+                <div class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,rgba(19,78,74,0.1),transparent_60%)]"></div>
+
+                <div class="relative z-10 text-center">
+                    <span class="text-rose-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 block">Build the Network of Care</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Initialize Your Safe Node</h2>
+                    <p class="text-stone-400 mb-12 max-w-xl mx-auto leading-relaxed">We are scaling extreme edge-case solutions to effortlessly protect a mainstream audience. Join the movement to reclaim digital autonomy. Your email is hashed locally &mdash; only the resulting blind key is stored.</p>
+
+                    <div id="signup-container" class="max-w-md mx-auto space-y-4">
+                        <input type="text" id="user-id-display" class="w-full p-3 bg-stone-800 border border-stone-700 rounded-xl text-center text-[10px] mono text-stone-500" readonly value="Initializing node...">
+                        <input type="email" id="final-email" placeholder="Secure email address..." class="w-full p-5 bg-stone-800 border border-stone-700 rounded-2xl text-white font-semibold focus:ring-2 focus:ring-rose-500/50 transition-all">
+                        <button id="submit-signup" class="w-full py-5 soteria-gradient text-white font-bold rounded-2xl shadow-xl hover:scale-[1.02] transition-all uppercase tracking-[0.15em] text-[10px]">Commit to Vault</button>
+                        <p id="status-msg" class="text-xs font-bold mt-4"></p>
+
+                        <div id="success-view" class="hidden mt-8 p-6 bg-white/5 border border-white/10 rounded-2xl text-left">
+                            <p class="text-[10px] font-black text-emerald-400 uppercase tracking-wider mb-3">Transmission Successful</p>
+                            <div class="space-y-3">
+                                <div>
+                                    <p class="text-[9px] text-stone-500 uppercase tracking-widest mb-1">Public Blind Key (Stored)</p>
+                                    <p id="stored-key" class="mono text-[10px] text-stone-300 break-all leading-relaxed"></p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-stone-500 uppercase tracking-widest mb-1">Protocol</p>
+                                    <p class="mono text-[10px] text-teal-400">SHA-256_V1 // BLIND_KEY</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer class="py-16 bg-stone-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center items-center space-x-2.5 mb-6">
+                <div class="w-8 h-8 soteria-gradient rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">S</div>
+                <span class="text-xl font-extrabold tracking-tighter">SOTERIA</span>
+            </div>
+            <p class="text-[10px] text-stone-500 uppercase tracking-[0.2em] font-bold mb-2">Autonomy is a Right, Not a Feature</p>
+            <p class="text-[9px] text-stone-600 mono uppercase" id="app-id-display"></p>
+            <div class="mt-8 pt-8 border-t border-stone-800 flex flex-wrap justify-center gap-8 text-[10px] text-stone-600 font-bold uppercase tracking-wider">
+                <a href="#vision" class="hover:text-rose-400 transition-colors">Vision</a>
+                <a href="#intelligence" class="hover:text-rose-400 transition-colors">Intelligence</a>
+                <a href="#architecture" class="hover:text-rose-400 transition-colors">Architecture</a>
+                <a href="#protocol" class="hover:text-rose-400 transition-colors">Protocol</a>
+                <a href="#operations" class="hover:text-rose-400 transition-colors">Operations</a>
+                <a href="#pioneers" class="hover:text-rose-400 transition-colors">Pioneers</a>
+                <a href="#vault" class="hover:text-rose-400 transition-colors">The Vault</a>
+            </div>
+            <p class="text-[9px] text-stone-700 mt-8">&copy; 2026 Soteria Ecosystem. Built for Autonomy.</p>
+        </div>
+    </footer>
+
+
+    <!-- ========================================== -->
+    <!-- SCRIPTS                                    -->
+    <!-- ========================================== -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'soteria-unified';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+
+        let db = null;
+        let auth = null;
+        let currentUserId = '';
+
+        if (firebaseConfig) {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+
+            const initAuth = async () => {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined') {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (e) {
+                    console.warn('Auth init failed:', e);
+                }
+            };
+
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    currentUserId = user.uid;
+                    document.getElementById('user-id-display').value = `NODE_ID: ${currentUserId}`;
+                }
+            });
+
+            initAuth();
+        }
+
+        document.getElementById('app-id-display').innerText = `NODE: ${appId}`;
+
+        // SHA-256 Hashing via Web Crypto API
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message.toLowerCase().trim());
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Live Protocol Demo
+        const liveInput = document.getElementById('live-email-input');
+        const hashOutput = document.getElementById('hash-output');
+
+        liveInput.addEventListener('input', async (e) => {
+            const val = e.target.value.trim();
+            if (!val) {
+                hashOutput.innerText = 'Awaiting user input...';
+                hashOutput.classList.remove('text-teal-400');
+                hashOutput.classList.add('text-stone-600');
+                return;
+            }
+            hashOutput.classList.remove('text-stone-600');
+            hashOutput.classList.add('text-teal-400');
+            hashOutput.innerText = await sha256(val);
+        });
+
+        // Scenario Data & Toggling
+        const scenarios = {
+            stalker: {
+                title: "Stalkerware Mitigation",
+                detect: "Neural layer identifies a \"Child Monitoring\" app exfiltrating camera feed metadata to an unauthorized residential IP address via a hidden proxy connection. The app was installed 47 days ago and has been silently transmitting GPS coordinates, microphone snippets, and browsing history.",
+                action: "Instead of alert removal (which tips off the abuser), Soteria uses Symbolic Logic to map all of the abuser's access points. It redirects the camera feed to an AI-generated \"Static Room\" loop and GPS data to a plausible routine pattern, maintaining the abuser's illusion of control while the user safely transitions to clean devices.",
+                resolve: "Full device audit logged. Clean migration pathway established with encrypted backup of all personal data. Incident report auto-generated in formats accepted by law enforcement and domestic violence advocates. Ongoing monitoring remains active on the compromised device to track the abuser's access patterns."
+            },
+            identity: {
+                title: "Airtight Identity Segregation",
+                detect: "Pattern recognition detects a \"Super User\" (journalist/activist) approaching a border crossing with a potentially compromised device. Geofencing triggers pre-configured identity segregation protocol based on the destination country's surveillance risk profile.",
+                action: "One-touch OPSEC trigger activates identity segregation. Deterministic guardrails flush the active OS partition, moving sensitive data to a neural-protected cloud shard that requires a non-coercive biometric signal to restore. The physical device presents a clean, plausible civilian profile with realistic usage history.",
+                resolve: "Upon safe arrival confirmation (non-duress signal), the secure partition is restored seamlessly. Travel audit log is generated. Any attempted access during the segregation period is flagged and reported. The system learns from the crossing to improve future protocols."
+            },
+            financial: {
+                title: "Financial Sovereignty",
+                detect: "Detection of shared account activity patterns characteristic of financial abuse: sudden large withdrawals following a geofence exit event, password changes on joint accounts during off-hours, and attempts to revoke authorized user access on credit lines.",
+                action: "Soteria's deterministic layer triggers a \"Shadow Account\" protocol. A portion of assets are silently partitioned into an unlinked, private vault accessible only to the survivor via non-coercive authentication. Joint account ledgers continue to reflect normal activity patterns to prevent immediate escalation by the abuser.",
+                resolve: "Financial independence pathway established. Documentation of financial abuse patterns compiled in formats accepted by family courts and legal aid organizations. Connection to verified financial counselors who specialize in abuse recovery. Ongoing monitoring of the original accounts for retaliatory actions."
+            },
+            doxxing: {
+                title: "Doxxing Defense",
+                detect: "Neural layer detects coordinated scraping of a user's personal information across social media platforms, public records databases, and data broker sites. Pattern analysis indicates an organized doxxing campaign with multiple actors. Threat escalation score: Critical.",
+                action: "Symbolic guardrails trigger an immediate multi-vector response: automated takedown requests to identified data brokers, platform-specific abuse reports filed simultaneously, and critical personal data (home address, phone, workplace) flagged for emergency removal. A decoy data profile is seeded across common lookup services.",
+                resolve: "Continuous monitoring established across 200+ data broker sites. Real-time alerts for any re-publication of removed data. Legal documentation package generated for law enforcement reporting. User connected to digital rights legal aid network. Long-term identity protection plan activated with periodic automated sweeps."
+            }
+        };
+
+        document.querySelectorAll('.scenario-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const key = this.dataset.scenario;
+                const data = scenarios[key];
+                const display = document.getElementById('scenario-display');
+
+                document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                display.style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('scen-title').innerText = data.title;
+                    document.getElementById('scen-detect').innerText = data.detect;
+                    document.getElementById('scen-action').innerText = data.action;
+                    document.getElementById('scen-resolve').innerText = data.resolve;
+                    display.style.opacity = '1';
+                }, 200);
+            });
+        });
+
+        // Vault Signup
+        const submitBtn = document.getElementById('submit-signup');
+        const emailInput = document.getElementById('final-email');
+        const statusMsg = document.getElementById('status-msg');
+        const successView = document.getElementById('success-view');
+
+        submitBtn.addEventListener('click', async () => {
+            const email = emailInput.value.trim();
+            if (!email || !email.includes('@')) {
+                statusMsg.innerText = "VALID EMAIL REQUIRED.";
+                statusMsg.className = "text-xs font-bold mt-4 text-rose-500 uppercase";
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "BLINDING IDENTITY...";
+
+            try {
+                const blindedKey = await sha256(email);
+
+                if (db) {
+                    const entryId = crypto.randomUUID();
+                    const docPath = `/artifacts/${appId}/public/data/vault/${entryId}`;
+
+                    await setDoc(doc(db, docPath), {
+                        blindedKey: blindedKey,
+                        userId: currentUserId,
+                        createdAt: serverTimestamp(),
+                        protocol: 'SHA-256_V1',
+                        status: 'pending_verification'
+                    });
+                }
+
+                statusMsg.innerText = "TRANSMISSION SECURE. COLLECTIVE SECURITY IS IMMINENT.";
+                statusMsg.className = "text-xs font-bold mt-4 text-emerald-400 uppercase";
+                document.getElementById('stored-key').innerText = blindedKey;
+
+                emailInput.classList.add('hidden');
+                submitBtn.classList.add('hidden');
+                successView.classList.remove('hidden');
+            } catch (err) {
+                console.error("Submission failed:", err);
+                statusMsg.innerText = "PROTOCOL ERROR. PLEASE TRY ANOTHER NODE.";
+                statusMsg.className = "text-xs font-bold mt-4 text-rose-500 uppercase";
+                submitBtn.disabled = false;
+                submitBtn.innerText = "COMMIT TO VAULT";
+            }
+        });
+
+        // Radar Chart
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Enterprise Defense',
+                    'Individual Safety',
+                    'OPSEC Automation',
+                    'Stigma Reduction',
+                    'Gendered Threat Mitigation',
+                    'Network Stability'
+                ],
+                datasets: [{
+                    label: 'Mainstream CyberSec',
+                    data: [95, 15, 10, 5, 10, 95],
+                    backgroundColor: 'rgba(168, 162, 158, 0.1)',
+                    borderColor: '#A8A29E',
+                    pointBackgroundColor: '#A8A29E',
+                    borderWidth: 1.5,
+                    pointRadius: 3
+                }, {
+                    label: 'Soteria Ecosystem',
+                    data: [35, 100, 95, 90, 100, 85],
+                    backgroundColor: 'rgba(157, 23, 77, 0.15)',
+                    borderColor: '#9D174D',
+                    pointBackgroundColor: '#9D174D',
+                    borderWidth: 2.5,
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        angleLines: { color: 'rgba(0,0,0,0.04)' },
+                        grid: { color: 'rgba(0,0,0,0.04)' },
+                        ticks: { display: false },
+                        pointLabels: {
+                            font: { size: 10, family: 'Inter', weight: '600' },
+                            color: '#78716C'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { size: 11, weight: 'bold', family: 'Inter' },
+                            padding: 24,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
